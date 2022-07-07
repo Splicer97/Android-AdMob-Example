@@ -17,6 +17,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initAdMob()
+        (application as AppMainState).showAdIfAvailable(this) {
+            Toast.makeText(this, "Start App" , Toast.LENGTH_LONG).show()
+        }
+        binding.button.setOnClickListener {
+            showInterAd()
+        }
     }
 
     override fun onResume() {
